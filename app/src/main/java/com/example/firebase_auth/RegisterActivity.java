@@ -23,6 +23,7 @@ import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    TextView signinText;
     FirebaseAuth mAuth;
     EditText editText_email, editText_password;
     Button button_register;
@@ -37,6 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
         editText_email = findViewById(R.id.text_email);
         editText_password = findViewById(R.id.edit_text_password);
         progressBar_signup = findViewById(R.id.progressbar);
+        signinText =findViewById(R.id.login_title);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -44,6 +46,15 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 registerUser();
+            }
+        });
+
+
+        signinText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -82,13 +93,16 @@ public class RegisterActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressBar_signup.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
+                    Intent intent = new Intent(RegisterActivity.this, ProfileActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
                     Toast.makeText(getApplicationContext(), "Successfully registered", Toast.LENGTH_LONG).show();
                 } else {
 
                     if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                         Toast.makeText(getApplicationContext(), "User already Exist", Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), "Cannot Registered user", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
 
