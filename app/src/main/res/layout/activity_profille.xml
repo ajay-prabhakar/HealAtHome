@@ -35,7 +35,7 @@
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textColor="@android:color/white"
-                tools:text="Belal Khan" />
+                tools:text="Chromicle" />
 
             <ProgressBar
                 android:id="@+id/progressbar_pic"
@@ -63,7 +63,7 @@
                 android:drawableLeft="@drawable/ic_email"
                 android:drawablePadding="16dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                tools:text="probelalkhan@gmail.com" />
+                tools:text="AjayPrabhakar369@gmail.com" />
 
             <TextView
                 android:id="@+id/text_not_verified"
@@ -87,7 +87,7 @@
                 android:drawablePadding="16dp"
                 android:enabled="true"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                tools:text="+917549161079" />
+                tools:text="+919515253369" />
 
             <TextView
                 android:id="@+id/text_password"
