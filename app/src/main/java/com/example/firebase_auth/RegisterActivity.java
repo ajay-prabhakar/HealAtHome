@@ -53,7 +53,8 @@ public class RegisterActivity extends AppCompatActivity {
         signinText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),LoginActivity.class);
+                finish();
+                Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -93,6 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressBar_signup.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
+                    finish();
                     Intent intent = new Intent(RegisterActivity.this, ProfileActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);

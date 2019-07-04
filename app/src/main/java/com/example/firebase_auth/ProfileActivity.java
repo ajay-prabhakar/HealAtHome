@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.ImageViewTarget;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -52,11 +54,12 @@ public class ProfileActivity extends AppCompatActivity {
         button_saveChanges = findViewById(R.id.button_save);
         progressBar = findViewById(R.id.progressbar_pic);
 
+        loadUserInformation();
+
         button_saveChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveUserInformation();
-
             }
         });
 
@@ -64,21 +67,50 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ImageChooser();
-
             }
         });
     }
 
+    private void loadUserInformation() {
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        if (user != null) {
+            if (user.getPhotoUrl() != null) {
+
+                String photoUrl = user.getPhotoUrl().toString();
+                Glide.with(this).load(photoUrl).into(profile_pic);
+            }
+            else {
+                profile_pic.setImageDrawable(getResources().getDrawable(R.drawable.ic_boy));
+            }
+            if (user.getDisplayName() != null) {
+                String displayName = user.getDisplayName();
+                profile_name.setText(displayName);
+            }
+        }
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (mAuth.getCurrentUser() == null) {
+            finish();
+            startActivity(new Intent(this, LoginActivity.class));
+        }
+    }
+
     private void saveUserInformation() {
         String profileName = profile_name.getText().toString();
-        if(profileName.isEmpty()){
+        if (profileName.isEmpty()) {
             profile_name.setError("Enter the Name");
             profile_name.requestFocus();
         }
 
-        FirebaseUser user =mAuth.getCurrentUser();
+        FirebaseUser user = mAuth.getCurrentUser();
 
-        if(user!=null && uri_profileImage!=null ){
+        if (user != null && uri_profileImage != null) {
             progressBar.setVisibility(View.GONE);
             UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder().setDisplayName(profileName).setPhotoUri(Uri.parse(String.valueOf(uri_profileImage))).build();
 
@@ -86,13 +118,11 @@ public class ProfileActivity extends AppCompatActivity {
             user.updateProfile(profile).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful()){
-                        Toast.makeText(getApplicationContext(),"Successfull upload every thing",Toast.LENGTH_SHORT).show();
+                    if (task.isSuccessful()) {
+                        Toast.makeText(getApplicationContext(), "Successfull upload every thing", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
-
-
 
 
         }
@@ -128,21 +158,21 @@ public class ProfileActivity extends AppCompatActivity {
         final StorageReference profileImageRef = FirebaseStorage.getInstance().getReference("profilePics/" + System.currentTimeMillis() + ".jpg");
 
         if (uri_profileImage != null) {
-        profileImageRef.putFile(uri_profileImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                progressBar.setVisibility(View.GONE);
+            profileImageRef.putFile(uri_profileImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    progressBar.setVisibility(View.GONE);
 
-                profileImageURL = profileImageRef.getDownloadUrl().toString();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                progressBar.setVisibility(View.GONE);
-                Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+                    profileImageURL = profileImageRef.getDownloadUrl().toString();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
 
-            }
-        });
+                }
+            });
+        }
     }
-}
 }

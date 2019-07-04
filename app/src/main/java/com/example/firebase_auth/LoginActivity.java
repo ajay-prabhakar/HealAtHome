@@ -36,8 +36,8 @@ public class LoginActivity extends AppCompatActivity {
         editText_email = findViewById(R.id.text_email);
         editText_password = findViewById(R.id.edit_text_password);
         registerText = findViewById(R.id.text_view_register);
-        button_signIn  = findViewById(R.id.button_sign_in);
-        progressBar =findViewById(R.id.progressbar);
+        button_signIn = findViewById(R.id.button_sign_in);
+        progressBar = findViewById(R.id.progressbar);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         registerText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),RegisterActivity.class);
+                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(intent);
             }
         });
@@ -53,12 +53,23 @@ public class LoginActivity extends AppCompatActivity {
         button_signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
                 userLogin();
             }
         });
     }
 
-    public void userLogin(){
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (mAuth.getCurrentUser()!= null){
+            finish();
+            startActivity(new Intent(this,ProfileActivity.class));
+        }
+    }
+
+    public void userLogin() {
 
 
         String email = editText_email.getText().toString().trim();
@@ -85,19 +96,18 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         progressBar.setVisibility(View.VISIBLE);
-        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-             if (task.isSuccessful()){
-                 Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
-                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                 startActivity(intent);
-                 progressBar.setVisibility(View.GONE);
-                 Toast.makeText(getApplicationContext(),"Sucessfully Login",Toast.LENGTH_SHORT).show();
-             }
-             else {
-                 Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-             }
+                progressBar.setVisibility(View.GONE);
+                if (task.isSuccessful()) {
+                    Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    Toast.makeText(getApplicationContext(), "Sucessfully Login", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
