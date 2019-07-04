@@ -1,9 +1,5 @@
 package com.example.firebase_auth;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -14,10 +10,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.ImageViewTarget;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -30,7 +30,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
-import java.net.URI;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -42,6 +41,8 @@ public class ProfileActivity extends AppCompatActivity {
     ProgressBar progressBar;
     String profileImageURL;
     FirebaseAuth mAuth;
+    Button signOut;
+    TextView verifiedtext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,8 @@ public class ProfileActivity extends AppCompatActivity {
         profile_name = findViewById(R.id.edit_text_name);
         button_saveChanges = findViewById(R.id.button_save);
         progressBar = findViewById(R.id.progressbar_pic);
+        verifiedtext = findViewById(R.id.emailVerified);
+        signOut = findViewById(R.id.button_logoOut);
 
         loadUserInformation();
 
@@ -69,23 +72,60 @@ public class ProfileActivity extends AppCompatActivity {
                 ImageChooser();
             }
         });
+
+        signOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                signOutAccount();
+            }
+        });
+
+    }
+
+    private void signOutAccount() {
+        FirebaseAuth.getInstance().signOut();
+        finish();
+        startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
     }
 
     private void loadUserInformation() {
-        FirebaseUser user = mAuth.getCurrentUser();
+        final FirebaseUser user = mAuth.getCurrentUser();
+
 
         if (user != null) {
             if (user.getPhotoUrl() != null) {
 
                 String photoUrl = user.getPhotoUrl().toString();
                 Glide.with(this).load(photoUrl).into(profile_pic);
-            }
-            else {
+            } else {
                 profile_pic.setImageDrawable(getResources().getDrawable(R.drawable.ic_boy));
             }
             if (user.getDisplayName() != null) {
                 String displayName = user.getDisplayName();
                 profile_name.setText(displayName);
+            }
+
+            if (user.isEmailVerified()) {
+                verifiedtext.setText("Verified");
+            } else {
+                verifiedtext.setText("Not Verified(click to verify)");
+                verifiedtext.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(getApplicationContext(), "Send Email succefully", Toast.LENGTH_SHORT).show();
+                                } else {
+
+                                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+
+                    }
+                });
             }
         }
     }
