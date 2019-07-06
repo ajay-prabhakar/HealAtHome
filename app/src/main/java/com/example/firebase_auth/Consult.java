@@ -6,24 +6,42 @@ import com.google.firebase.database.Exclude;
  * Created by Chromicle on 6/7/19.
  */
 public class Consult {
-    String symtonms;
+    String Count;
     String time;
-    String doctor;
+    String Additional;
     String Address;
+    String diseses;
+    String email;
 
     public Consult(){
 
     }
 
-    public Consult(String symtonms, String time, String doctor, String address) {
-        this.symtonms = symtonms;
+    public Consult(String symtonms, String time, String doctor, String address, String additional, String email) {
+        this.Count = symtonms;
         this.time = time;
-        this.doctor = doctor;
+        this.Additional = doctor;
         Address = address;
+        this.diseses = additional;
+        this.email = email;
     }
 
-    public String getSymtonms() {
-        return symtonms;
+    @Exclude
+    public String getAdditional() {
+        return Additional;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getDiseses() {
+        return diseses;
+    }
+
+    @Exclude
+    public String getCount() {
+        return Count;
     }
 
     public String getTime() {
@@ -31,7 +49,7 @@ public class Consult {
     }
 
     public String getDoctor() {
-        return doctor;
+        return Additional;
     }
 
 
@@ -39,4 +57,5 @@ public class Consult {
     public String getAddress() {
         return Address;
     }
+
 }

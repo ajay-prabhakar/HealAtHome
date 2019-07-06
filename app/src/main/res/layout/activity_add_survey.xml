@@ -25,15 +25,65 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="symtonyms" />
+                    android:text="Found People" />
 
                 <EditText
                     android:id="@+id/pat_sys"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:hint="symptoms" />
+                    android:hint="Count" />
             </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Disesases" />
+
+                <Spinner
+                    android:hint="list out all didesses"
+                    android:id="@+id/typeDoctors"
+                    android:entries="@array/types_doctors"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:prompt="@style/Base.Widget.AppCompat.Light.PopupMenu.Overflow" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/selected"
+                android:text="Selected Disies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Addres" />
+
+                <EditText
+                    android:id="@+id/pat_address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:hint="Address" />
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -58,50 +108,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:hint="From How much time you feeling" />
+                    android:hint="From How much time they feeling" />
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:padding="5dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Time" />
-
-
-                <Spinner
-                    android:id="@+id/typeDoctors"
-                    android:layout_width="300dp"
-                    android:layout_height="40dp"
-                    android:entries="@array/types_doctors"
-                    android:prompt="@style/Base.Widget.AppCompat.Light.PopupMenu.Overflow" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:padding="5dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Addres" />
-
-                <EditText
-                    android:id="@+id/pat_address"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="3"
-                    android:hint="Address" />
             </LinearLayout>
 
 
@@ -115,6 +123,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
+                    android:visibility="gone"
                     android:text="Want to consult particular doctor"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large" />
             </LinearLayout>
@@ -129,7 +138,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Email" />
+                    android:text="Adidtional" />
 
                 <EditText
                     android:id="@+id/doc_email"
@@ -137,7 +146,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:ems="10"
-                    android:hint="Provide email of doctor"
+                    android:hint="Aditional Information want to say"
                     android:inputType="textMultiLine" />
 
             </LinearLayout>

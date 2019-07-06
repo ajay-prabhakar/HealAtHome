@@ -1,7 +1,6 @@
 package com.example.firebase_auth;
 
 import android.app.Activity;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 /**
  * Created by Chromicle on 6/7/19.
@@ -40,7 +38,7 @@ public class ConsultAdapter extends ArrayAdapter<Consult> {
         TextView fname = listViewItem.findViewById(R.id.tvSym);
         TextView fgenre = listViewItem.findViewById(R.id.tvTime);
         Consult consult = consultList.get(position);
-        fname.setText(consult.getSymtonms());
+        fname.setText(consult.getCount());
         fgenre.setText(consult.getTime());
 
         return listViewItem;

@@ -238,10 +238,12 @@
 
 
     <array name="types_doctors">
-        <item>Cardioligist</item>
-        <item>Anesthesiologists</item>
-        <item>Dermatologists</item>
+        <item>Heart disease and stroke.</item>
+        <item>Cancer.</item>
+        <item>Diabetes.</item>
         <item>Emergency Medicine Specialists</item>
-        <item>Gastroenterologists</item>
+        <item>Chronic respiratory conditions.</item>
+        <item>Arthritis.</item>
+        <item>HIV/AIDS.</item>
     </array>
 </resources>
