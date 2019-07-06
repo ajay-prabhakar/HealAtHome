@@ -236,7 +236,6 @@
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBRQbZYNZ8ZMsx487gGivxko3CkR5FH6V0</string>
 
 
-
     <array name="types_doctors">
         <item>Heart disease and stroke.</item>
         <item>Cancer.</item>

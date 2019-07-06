@@ -109,7 +109,7 @@ public class ConsultDoctor extends AppCompatActivity {
                 FirebaseUser user = mAuth.getCurrentUser();
 
 
-                Consult consult = new Consult(sym, time, email, address,type,user.getEmail().trim());
+                Consult consult = new Consult(sym, time, id, address,type,user.getEmail().trim(),email);
 
                     allDoc.child(id).setValue(consult);
 
@@ -138,7 +138,7 @@ public class ConsultDoctor extends AppCompatActivity {
                         patDoc = FirebaseDatabase.getInstance().getReference(email);
                         String id = patDoc.push().getKey();
 
-                        Consult dom = new Consult(sym, time,"null",address,type,"null");
+                        Consult dom = new Consult(sym, time,"null",address,type,"null","null");
 
                         patDoc.child(id).setValue(dom);
 

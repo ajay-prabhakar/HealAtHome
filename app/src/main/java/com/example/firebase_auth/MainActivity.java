@@ -30,6 +30,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -40,6 +41,10 @@ public class MainActivity extends AppCompatActivity
 
     DatabaseReference databaseReq;
     FirebaseAuth mAuth;
+
+
+    public static final String DISEASES = "diseases";
+    public static final String SURVEY_ID = "surveyId";
 
 
     ListView consultList;
@@ -62,7 +67,7 @@ public class MainActivity extends AppCompatActivity
         final FirebaseUser user = mAuth.getCurrentUser();
         String email =user.getEmail();
 
-        int index = email.indexOf('@');
+        final int index = email.indexOf('@');
         String mail = email.substring(0,index);
         databaseReq = FirebaseDatabase.getInstance().getReference("ALL");
 
@@ -82,6 +87,20 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        consultList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Consult consult = consulList.get(position);
+                Intent intent = new Intent(MainActivity.this,SurveyDetails.class);
+                intent.putExtra(SURVEY_ID,consult.getDoctor());
+                intent.putExtra(DISEASES,consult.getDiseses());
+                startActivity(intent);
+            }
+
+        });
     }
 
 

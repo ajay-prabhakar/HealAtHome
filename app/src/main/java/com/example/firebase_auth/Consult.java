@@ -11,20 +11,28 @@ public class Consult {
     String Additional;
     String Address;
     String diseses;
+
+    public String getId() {
+        return id;
+    }
+
     String email;
+    String id;
 
-    public Consult(){
+    public Consult() {
 
     }
 
-    public Consult(String symtonms, String time, String doctor, String address, String additional, String email) {
-        this.Count = symtonms;
+    public Consult(String count, String time, String additional, String address, String diseses, String email, String id) {
+        Count = count;
         this.time = time;
-        this.Additional = doctor;
+        Additional = additional;
         Address = address;
-        this.diseses = additional;
+        this.diseses = diseses;
         this.email = email;
+        this.id = id;
     }
+
 
     @Exclude
     public String getAdditional() {
