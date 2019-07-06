@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_slideshow) {
 
-            startActivity(new Intent(MainActivity.this,MapsActivity.class));
+            startActivity(new Intent(MainActivity.this, MapsActivity.class));
 
         } else if (id == R.id.nav_tools) {
             startActivity(new Intent(MainActivity.this, FirstAid.class));

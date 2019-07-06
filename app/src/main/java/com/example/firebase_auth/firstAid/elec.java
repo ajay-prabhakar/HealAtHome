@@ -9,7 +9,7 @@ import com.example.firebase_auth.R;
 /**
  * Created by Chromicle on 6/7/19.
  */
-public class elec  extends AppCompatActivity {
+public class elec extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

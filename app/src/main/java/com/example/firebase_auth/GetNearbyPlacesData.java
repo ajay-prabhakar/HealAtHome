@@ -13,11 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Created by kats on 3/25/18.
- */
 
-public class GetNearbyPlacesData extends AsyncTask<Object , String , String> {
+public class GetNearbyPlacesData extends AsyncTask<Object, String, String> {
 
     String googlePlacesData;
     GoogleMap mMap;
@@ -27,8 +24,8 @@ public class GetNearbyPlacesData extends AsyncTask<Object , String , String> {
     @Override
     protected String doInBackground(Object... objects) {
 
-        mMap = (GoogleMap)objects[0];
-        url = (String)objects[1];
+        mMap = (GoogleMap) objects[0];
+        url = (String) objects[1];
 
         //create an object of download URL class
 
@@ -45,7 +42,7 @@ public class GetNearbyPlacesData extends AsyncTask<Object , String , String> {
     @Override
     protected void onPostExecute(String s) {
 
-        List<HashMap<String , String>> nearbyPlaceList = null;
+        List<HashMap<String, String>> nearbyPlaceList = null;
 
         DataParser parser = new DataParser();
         nearbyPlaceList = parser.parse(s);
@@ -54,22 +51,20 @@ public class GetNearbyPlacesData extends AsyncTask<Object , String , String> {
 
     }
 
-    private void showNearbyPlaces(List<HashMap<String,String>> nearbyPlaceList)
-    {
-        for(int i=0;i<nearbyPlaceList.size();i++)
-        {
+    private void showNearbyPlaces(List<HashMap<String, String>> nearbyPlaceList) {
+        for (int i = 0; i < nearbyPlaceList.size(); i++) {
             //show all the places in the list
             //we are going to create marker options
 
             MarkerOptions markerOptions = new MarkerOptions();
-            HashMap<String,String> googlePlace = nearbyPlaceList.get(i);
+            HashMap<String, String> googlePlace = nearbyPlaceList.get(i);
 
             String placeName = googlePlace.get("place_name");
             String vicinity = googlePlace.get("vicinity");
             double lat = Double.parseDouble(Objects.requireNonNull(googlePlace.get("lat")));
             double lng = Double.parseDouble(Objects.requireNonNull(googlePlace.get("lng")));
 
-            LatLng latLng = new LatLng(lat,lng);
+            LatLng latLng = new LatLng(lat, lng);
 
             markerOptions.position(latLng);
             markerOptions.title(placeName + " : " + vicinity);

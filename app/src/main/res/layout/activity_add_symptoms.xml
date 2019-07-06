@@ -5,24 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Medical.MedicalProblems">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="#ffffff"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textColor="#000000"
             android:background="#ffffff"
             android:text="What are you feeling right now?"
+            android:textAlignment="center"
+            android:textColor="#000000"
             android:textSize="17dp"
-            tools:layout_editor_absoluteY="0dp"
-            tools:layout_editor_absoluteX="8dp" />
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="0dp" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,25 +33,25 @@
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="14dp"
-            tools:layout_editor_absoluteY="0dp"
-            tools:layout_editor_absoluteX="8dp" />
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="0dp" />
 
         <View
             android:layout_width="match_parent"
-            android:layout_margin="4dp"
             android:layout_height="2dp"
-            android:background="#ffffff"
+            android:layout_margin="4dp"
             android:layout_marginTop="2dp"
-            android:layout_marginBottom="2dp"/>
+            android:layout_marginBottom="2dp"
+            android:background="#ffffff" />
 
         <ListView
             android:id="@+id/listOfProblems"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:background="#ffff"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteY="0dp"
-            tools:layout_editor_absoluteX="8dp" />
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="0dp" />
 
     </LinearLayout>
 

@@ -8,14 +8,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-/**
- * Created by kats on 3/25/18.
- */
-
 public class DownloadURL {
 
-    public String readUrl(String myUrl) throws IOException
-    {
+    public String readUrl(String myUrl) throws IOException {
         String data = "";
         InputStream inputStream = null;
         HttpURLConnection urlConnection = null;
@@ -34,11 +29,10 @@ public class DownloadURL {
 
             //read each line one by one
 
-            String line=""; //stores each line
+            String line = ""; //stores each line
             //append it to the String buffer
 
-            while ((line=br.readLine())!=null)
-            {
+            while ((line = br.readLine()) != null) {
                 sb.append(line);
             }
 
@@ -49,14 +43,11 @@ public class DownloadURL {
             br.close();
 
 
-
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }
-
-        finally {
+        } finally {
             //something you want to execute even if there is some exception comes in finally block
 
             //always gets executed

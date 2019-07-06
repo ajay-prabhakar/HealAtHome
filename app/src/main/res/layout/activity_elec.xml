@@ -4,128 +4,142 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
         <LinearLayout
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:id="@+id/l1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context="com.demotxt.droidsrce.homedashboard.Home"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
             android:orientation="vertical"
             android:padding="10dp"
-            android:gravity="center"
-            android:id="@+id/l1">
+            tools:context="com.demotxt.droidsrce.homedashboard.Home">
+
             <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:clipToPadding="false"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:orientation="horizontal">
+
                 <androidx.cardview.widget.CardView
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:clickable="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
+                    android:layout_margin="10dp"
+                    android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>
+
             <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:clipToPadding="false"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:orientation="horizontal">
+
                 <androidx.cardview.widget.CardView
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:clickable="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
+                    android:layout_margin="10dp"
+                    android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
-                            android:text="Begin CPR if the person shows no signs of circulation, such as breathing, coughing or movement. Try to prevent the injured person from becoming chilled. Apply a bandage. Cover any burned areas with a sterile gauze bandage, if available, or a clean cloth."/>
+                            android:text="Begin CPR if the person shows no signs of circulation, such as breathing, coughing or movement. Try to prevent the injured person from becoming chilled. Apply a bandage. Cover any burned areas with a sterile gauze bandage, if available, or a clean cloth." />
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
 
-
             </LinearLayout>
+
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:clipToPadding="false"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:orientation="horizontal">
+
                 <androidx.cardview.widget.CardView
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:clickable="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
+                    android:layout_margin="10dp"
+                    android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="match_parent"
-                            android:layout_margin="10dp"
                             android:layout_height="wrap_content"
-                            android:text="Turn off the source of electricity, if possible. If not, move the source away from you and the person, using a dry, nonconducting object made of cardboard, plastic or wood"/>
+                            android:layout_margin="10dp"
+                            android:text="Turn off the source of electricity, if possible. If not, move the source away from you and the person, using a dry, nonconducting object made of cardboard, plastic or wood" />
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-
 
 
             </LinearLayout>
+
             <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:clipToPadding="false"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:orientation="horizontal">
+
                 <androidx.cardview.widget.CardView
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:clickable="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp">
+                    android:layout_margin="10dp"
+                    android:clickable="true"
+                    android:foreground="?android:attr/selectableItemBackground">
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
                         <TextView
-                            android:padding="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Call 911 or your local emergency number if the source of the burn is a high-voltage wire or lightning. Don't get near high-voltage wires until the power is turned off. Overhead power lines usually aren't insulated. Stay at least 20 feet (about 6 meters) away — farther if wires are jumping and sparking."/>
+                            android:padding="10dp"
+                            android:text="Call 911 or your local emergency number if the source of the burn is a high-voltage wire or lightning. Don't get near high-voltage wires until the power is turned off. Overhead power lines usually aren't insulated. Stay at least 20 feet (about 6 meters) away — farther if wires are jumping and sparking." />
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-
 
 
             </LinearLayout>

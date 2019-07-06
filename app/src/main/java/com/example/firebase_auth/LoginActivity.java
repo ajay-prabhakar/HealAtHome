@@ -63,9 +63,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        if (mAuth.getCurrentUser()!= null){
+        if (mAuth.getCurrentUser() != null) {
             finish();
-            startActivity(new Intent(this,ProfileActivity.class));
+            startActivity(new Intent(this, ProfileActivity.class));
         }
     }
 

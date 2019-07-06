@@ -62,8 +62,8 @@
                 android:layout_gravity="top"
                 android:drawablePadding="16dp"
                 android:enabled="true"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:text="Check if you are doctor or else it is patient" />
+                android:text="Check if you are doctor or else it is patient"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <TextView
                 android:id="@+id/text_not_verified"
@@ -122,14 +122,13 @@
                 android:textColor="@android:color/white" />
 
             <TextView
+                android:id="@+id/emailVerified"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/emailVerified"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:text="Verified"
-                android:layout_gravity="center_horizontal"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
 
             <Button

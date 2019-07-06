@@ -102,11 +102,11 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Protect the burned person from further harm. If you can do so safely, make sure the person you're helping is not in contact with the source of the burn. For electrical burns, make sure the power source is off before you approach the burned person."/>
-
+                            android:text="Protect the burned person from further harm. If you can do so safely, make sure the person you're helping is not in contact with the source of the burn. For electrical burns, make sure the power source is off before you approach the burned person." />
 
 
                     </LinearLayout>
@@ -134,12 +134,12 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Make certain that the person burned is breathing. If needed, begin rescue breathing if you know how
-Watch for signs of shock. Signs and symptoms include fainting, pale complexion or breathing in a notably shallow fashion."
-                            />
+Watch for signs of shock. Signs and symptoms include fainting, pale complexion or breathing in a notably shallow fashion." />
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -153,7 +153,6 @@ Watch for signs of shock. Signs and symptoms include fainting, pale complexion o
                 android:clipToPadding="false"
                 android:gravity="center"
                 android:orientation="horizontal">
-
 
 
             </LinearLayout>

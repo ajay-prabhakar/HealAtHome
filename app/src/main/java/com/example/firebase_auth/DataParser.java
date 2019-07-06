@@ -8,15 +8,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * Created by kats on 3/25/18.
- */
 
 public class DataParser {
 
-    private HashMap<String , String> getPlace(JSONObject googlePlaceJson)
-    {
-        HashMap<String , String> googlePlacesMap = new HashMap<>();
+    private HashMap<String, String> getPlace(JSONObject googlePlaceJson) {
+        HashMap<String, String> googlePlacesMap = new HashMap<>();
 
         //store all the parameters using String
 
@@ -41,14 +37,14 @@ public class DataParser {
 
             reference = googlePlaceJson.getString("reference");
 
-            googlePlacesMap.put("place_name" , placeName);
-            googlePlacesMap.put("vicinity" , vicinity);
-            googlePlacesMap.put("lat" , latitude);
-            googlePlacesMap.put("lng" , longitude);
-            googlePlacesMap.put("reference" , reference);
+            googlePlacesMap.put("place_name", placeName);
+            googlePlacesMap.put("vicinity", vicinity);
+            googlePlacesMap.put("lat", latitude);
+            googlePlacesMap.put("lng", longitude);
+            googlePlacesMap.put("reference", reference);
 
-        } catch(JSONException e) {
-        e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
 
         }
 
@@ -59,17 +55,16 @@ public class DataParser {
 
 
     //to store all the places create a list of HashMap
-    private List<HashMap<String,String>> getPlaces(JSONArray jsonArray)
-    {
+    private List<HashMap<String, String>> getPlaces(JSONArray jsonArray) {
 
         //getPlace returns a HashMap for each place
         //getPlaces() creates a list of HashMaps
 
         int count = jsonArray.length();
-        List<HashMap<String,String>> placesList = new ArrayList<>();
-        HashMap<String,String> placeMap = null; //to store each place we fetch
+        List<HashMap<String, String>> placesList = new ArrayList<>();
+        HashMap<String, String> placeMap = null; //to store each place we fetch
 
-        for(int i=0 ; i<count;i++) {
+        for (int i = 0; i < count; i++) {
 
             //use getPlace method to fetch one place
             //then , add it to list of hashmap
@@ -94,8 +89,7 @@ public class DataParser {
     //will call getPlace method to fetch each element for each place and store it in a list
     //return the list to parse method
 
-    public List<HashMap<String,String>> parse(String jsonData)
-    {
+    public List<HashMap<String, String>> parse(String jsonData) {
         JSONArray jsonArray = null;
         JSONObject jsonObject;
 

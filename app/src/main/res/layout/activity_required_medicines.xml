@@ -3,35 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/medicineName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="MedicineName"
-            android:textSize="28dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textAlignment="center"
-            android:layout_margin="6dp"
-            tools:layout_editor_absoluteY="0dp"
-            tools:layout_editor_absoluteX="0dp" />
+
+            <TextView
+                android:id="@+id/medicineName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:text="MedicineName"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="28dp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="0dp" />
+
             <TextView
                 android:id="@+id/indexView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="7dp"
-                android:text="2323"/>
+                android:text="2323" />
         </RelativeLayout>
 
         <TextView
@@ -39,26 +41,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:textAlignment="center"
-            android:textSize="15dp"
             android:text="Fever"
-            />
+            android:textAlignment="center"
+            android:textSize="15dp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="3dp"
             android:layout_margin="5dp"
-            android:background="@color/colorPrimary"
-        />
+            android:background="@color/colorPrimary" />
 
         <ImageView
             android:id="@+id/medicineImage"
-            android:layout_margin="5dp"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:adjustViewBounds="true"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_weight=".4"
-            />
+            android:adjustViewBounds="true" />
 
     </LinearLayout>
 

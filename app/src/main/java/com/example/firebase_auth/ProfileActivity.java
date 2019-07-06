@@ -76,11 +76,10 @@ public class ProfileActivity extends AppCompatActivity {
         checkDoctor.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
+                if (isChecked) {
                     role = "DOCTOR";
 
-                }
-                else {
+                } else {
                     role = "PAITENT";
                 }
             }
@@ -115,8 +114,8 @@ public class ProfileActivity extends AppCompatActivity {
         startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
     }
 
-    private void intentMainActivity(){
-        startActivity(new Intent(ProfileActivity.this,MainActivity.class));
+    private void intentMainActivity() {
+        startActivity(new Intent(ProfileActivity.this, MainActivity.class));
     }
 
     private void loadUserInformation() {
@@ -138,8 +137,7 @@ public class ProfileActivity extends AppCompatActivity {
 
             if (user.isEmailVerified()) {
                 verifiedtext.setText("Verified");
-            }
-            else {
+            } else {
                 verifiedtext.setText("Not Verified(click to verify)");
                 verifiedtext.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -184,7 +182,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         if (user != null && uri_profileImage != null) {
             progressBar.setVisibility(View.GONE);
-            UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder().setDisplayName(profileName+getResources().getString(R.string.space)+role).setPhotoUri(Uri.parse(String.valueOf(uri_profileImage))).build();
+            UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder().setDisplayName(profileName + getResources().getString(R.string.space) + role).setPhotoUri(Uri.parse(String.valueOf(uri_profileImage))).build();
 
 
             user.updateProfile(profile).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -192,9 +190,8 @@ public class ProfileActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
                         Toast.makeText(getApplicationContext(), "Successfull upload every thing", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-                        Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
 
                 }

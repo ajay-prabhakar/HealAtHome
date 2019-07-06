@@ -38,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
         editText_email = findViewById(R.id.text_email);
         editText_password = findViewById(R.id.edit_text_password);
         progressBar_signup = findViewById(R.id.progressbar);
-        signinText =findViewById(R.id.login_title);
+        signinText = findViewById(R.id.login_title);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -54,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -104,7 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
                     if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                         Toast.makeText(getApplicationContext(), "User already Exist", Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(getApplicationContext(),task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }
 
