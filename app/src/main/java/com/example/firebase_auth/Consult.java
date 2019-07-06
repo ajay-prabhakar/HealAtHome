@@ -11,6 +11,10 @@ public class Consult {
     String doctor;
     String Address;
 
+    public Consult(){
+
+    }
+
     public Consult(String symtonms, String time, String doctor, String address) {
         this.symtonms = symtonms;
         this.time = time;

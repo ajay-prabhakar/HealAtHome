@@ -16,6 +16,13 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -23,9 +30,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    DatabaseReference databaseReq;
+    FirebaseAuth mAuth;
+
+
+    ListView consultList;
+
+    List<Consult> consulList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +53,20 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        consultList = findViewById(R.id.listViewConsolts);
+
+
+        mAuth = FirebaseAuth.getInstance();
+        consulList = new ArrayList<>();
+        final FirebaseUser user = mAuth.getCurrentUser();
+        String email =user.getEmail();
+
+        int index = email.indexOf('@');
+        String mail = email.substring(0,index);
+        databaseReq = FirebaseDatabase.getInstance().getReference("ALL");
+
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +82,36 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+
+
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        databaseReq.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                consulList.clear();
+                for (DataSnapshot artistSnapshot : dataSnapshot.getChildren()) {
+
+                    Consult consult = artistSnapshot.getValue(Consult.class);
+                    consulList.add(consult);
+                }
+
+                ConsultAdapter adapter = new ConsultAdapter(MainActivity.this, consulList);
+                consultList.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override

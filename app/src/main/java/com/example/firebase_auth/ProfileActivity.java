@@ -105,7 +105,6 @@ public class ProfileActivity extends AppCompatActivity {
                     role = "PAT";
                 }
 
-                checks();
             }
         });
 
@@ -133,15 +132,6 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-    private void checks(){
-        if (role.equals("DOC")){
-            specification.setHint("What is you specification");
-        }
-        else {
-
-            specification.setHint("Tell us about your self");
-        }
-    }
 
     private void signOutAccount() {
         FirebaseAuth.getInstance().signOut();

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#AAA"
+    android:alpha="0.7"
+    android:id="@+id/relLayout"
+    android:layout_height="wrap_content"
+    android:paddingBottom="1dp"
+
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EEE"
+        android:padding="4dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text"
+            android:layout_toLeftOf="@+id/moreOptions"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvSym"
+                android:text="Symptonym"
+                android:textSize="32sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="time he is suffering"
+                android:textStyle="bold"
+                android:id="@+id/tvTime"
+                android:textColor="@color/colorAccent"/>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:id="@+id/moreOptions"
+            />
+    </RelativeLayout>
+</RelativeLayout>
