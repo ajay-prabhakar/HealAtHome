@@ -76,12 +76,13 @@
                     android:layout_weight="1"
                     android:text="Addres" />
 
-                <EditText
+                <Button
                     android:id="@+id/pat_address"
                     android:layout_width="0dp"
+                    android:background="@color/colorPrimary"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
-                    android:hint="Address" />
+                    android:text="get Location" />
             </LinearLayout>
 
 

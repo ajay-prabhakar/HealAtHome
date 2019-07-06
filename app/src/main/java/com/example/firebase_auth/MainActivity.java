@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity
         String name = user.getDisplayName();
         String lastWord = name.substring(name.lastIndexOf(" ") + 1);
 
-        if (lastWord.equals("DON")) {
+        if (lastWord.equals("DOC")) {
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
             Menu nav_Menu = navigationView.getMenu();
             nav_Menu.findItem(R.id.nav_gallery).setVisible(false);
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity
         } else {
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
             Menu nav_Menu = navigationView.getMenu();
-            nav_Menu.findItem(R.id.nav_gallery).setVisible(false);
+            nav_Menu.findItem(R.id.nav_gallery).setVisible(true);
         }
     }
 
@@ -214,6 +214,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(MainActivity.this, FirstAid.class));
 
         } else if (id == R.id.nav_share) {
+
 
         } else if (id == R.id.nav_send) {
 
