@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.firebase_auth.Medical.MedicalProblems;
+import com.example.firebase_auth.firstAid.FirstAid;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -94,8 +95,10 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_slideshow) {
 
+            startActivity(new Intent(MainActivity.this,MapsActivity.class));
+
         } else if (id == R.id.nav_tools) {
-            startActivity(new Intent(MainActivity.this,FirstAid.class));
+            startActivity(new Intent(MainActivity.this, FirstAid.class));
 
         } else if (id == R.id.nav_share) {
 
