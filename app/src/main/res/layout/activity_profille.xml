@@ -63,7 +63,7 @@
                 android:drawablePadding="16dp"
                 android:enabled="true"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                tools:text="Check if you are doctor or else it is patient" />
+                android:text="Check if you are doctor or else it is patient" />
 
             <TextView
                 android:id="@+id/text_not_verified"

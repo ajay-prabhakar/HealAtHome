@@ -9,6 +9,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
+        android:layout_margin="10dp"
         android:ems="10"
         android:inputType="textPersonName" />
 
@@ -16,9 +18,11 @@
         android:id="@+id/B_Search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="?colorPrimary"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/TF_location"
         android:onClick="onClick"
+        android:layout_margin="10dp"
         android:text="Search" />
 
     <Button
@@ -26,6 +30,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/TF_location"
+        android:layout_margin="10dp"
+        android:background="?colorPrimary"
         android:onClick="onClick"
         android:text="Hospital" />
 
@@ -34,9 +40,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/TF_location"
+        android:background="?colorPrimary"
+        android:layout_margin="10dp"
         android:layout_toRightOf="@id/B_Hospital"
         android:onClick="onClick"
-
         android:text="Restaurant" />
 
     <Button
@@ -44,13 +51,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/TF_location"
-        android:layout_toRightOf="@id/B_Restaurant"
+        android:background="?colorPrimary"
+        android:visibility="gone"
+        android:layout_toEndOf="@id/B_Restaurant"
         android:onClick="onClick"
         android:text="School" />
 
     <fragment
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/map"
+        android:layout_margin="25dp"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

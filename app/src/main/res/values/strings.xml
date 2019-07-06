@@ -233,5 +233,5 @@
     <string name="dailyHealthCareMontelukastWebsite">https://www.pharmacychecker.com/generic/price-comparison/montelukast/10+mg/</string>
 
 
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBRQbZYNZ8ZMsx487gGivxko3CkR5FH6V0</string>
+        <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBRQbZYNZ8ZMsx487gGivxko3CkR5FH6V0</string>
 </resources>
