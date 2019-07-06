@@ -3,16 +3,17 @@ package com.example.firebase_auth.Medical;
 
 import com.example.firebase_auth.R;
 
-/**
- * Created by zainm on 15-Jun-17.
- */
 
 public class MedicinesController {
 
-    /** declaring byte index variables */
+    /**
+     * declaring byte index variables
+     */
     public static byte index, index1 = -1;
 
-    /** medicinesNames 2D array */
+    /**
+     * medicinesNames 2D array
+     */
     static int[][] medicinesNames = {
             {R.string.feverNuberol, R.string.feverAspirin, R.string.feverActironCF, R.string.feverAcetaminophen, R.string.feverPanadol},
             {R.string.headacheProthiaden, R.string.headacheDisprin, R.string.headacheParacetamol, R.string.headacheZolmitriptan, R.string.headacheNaproxen},
@@ -21,10 +22,12 @@ public class MedicinesController {
             {R.string.constipationBuscopan, R.string.constipationLactulose, R.string.constipationGlucomannan, R.string.constipationBisacodyl, R.string.constipationLomotil},
             {R.string.bloodPressureLisinopril, R.string.bloodPressureAtenolol, R.string.bloodPressureActrapidPenfill, R.string.bloodPressureAmaryl, R.string.bloodPressureDiamicronMR},
             {R.string.dailyHealthCareGlucobay, R.string.dailyHealthCareGNCBurn60, R.string.dailyHealthCareCalciumPluswithMagnesium, R.string.dailyHealthCareBetaCarotene, R.string.dailyHealthCareADVANTEC, R.string.dailyHealthCareAscard,
-            R.string.dailyHealthCareLoprin, R.string.dailyHealthCareCLENILNEBULISER, R.string.dailyHealthCareMontelukast}
+                    R.string.dailyHealthCareLoprin, R.string.dailyHealthCareCLENILNEBULISER, R.string.dailyHealthCareMontelukast}
     };
 
-    /** medicine descriptions 2D array */
+    /**
+     * medicine descriptions 2D array
+     */
     static int[][] descriptions = {
             {R.string.feverNuberolDescription, R.string.feverAspirinDescription, R.string.feverActironCFDescription, R.string.feverAcetaminophenDescription, R.string.feverPanadolDescription},
             {R.string.headacheProthiadenDescription, R.string.headacheDisprinDescription, R.string.headacheParacetamolDescription, R.string.headacheZolmitriptanDescription, R.string.headacheNaproxenDescription},
@@ -36,7 +39,9 @@ public class MedicinesController {
                     R.string.dailyHealthCareLoprinDescription, R.string.dailyHealthCareCLENILNEBULISERDescription, R.string.dailyHealthCareMontelukastDescription}
     };
 
-    /** medicines imagesId 2D array  */
+    /**
+     * medicines imagesId 2D array
+     */
     static int[][] imagesId = {
             {R.drawable.fever_nuberol, R.drawable.fever_aspirin, R.drawable.fever_actiron, R.drawable.fever_acetaminophen, R.drawable.fever_panadol},
             {R.drawable.headache_prothiaden, R.drawable.headache_disprin, R.drawable.headache_paracetamol, R.drawable.headache_zolmitriptan, R.drawable.headache_naproxen},
@@ -49,8 +54,10 @@ public class MedicinesController {
 
     };
 
-    /** websites 2D array */
-    static int[][] websites  = {
+    /**
+     * websites 2D array
+     */
+    static int[][] websites = {
             {R.string.feverNuberolWebsite, R.string.feverAspirinWebsite, R.string.feverActironCFWebsite, R.string.feverAcetaminophenWebsite, R.string.feverPanadolWebsite},
             {R.string.headacheProthiadenWebsite, R.string.headacheDisprinWebsite, R.string.headacheParacetamolWebsite, R.string.headacheZolmitriptanWebsite, R.string.headacheNaproxenWebsite},
             {R.string.coldAndCoughLefloxWebsite, R.string.coldAndCoughCodeineWebsite, R.string.coldAndCoughArinacWebsite, R.string.coldAndCoughDextromethorphanWebsite, R.string.coldAndCoughNoscapineWebsite},
@@ -62,34 +69,38 @@ public class MedicinesController {
     };
 
     /**
-     *  getMedicine name method
-     *  @return medicinesNames
-     * */
-    public static int[] getMedicines(){
+     * getMedicine name method
+     *
+     * @return medicinesNames
+     */
+    public static int[] getMedicines() {
         return medicinesNames[index];
     }
 
     /**
      * getDescriptions method
+     *
      * @return descriptions
-     * */
-    public static int[] getDescriptions(){
+     */
+    public static int[] getDescriptions() {
         return descriptions[index];
     }
 
     /**
      * getImagesId method
+     *
      * @return imagesId
-     * */
-    public static int[] getImagesId(){
+     */
+    public static int[] getImagesId() {
         return imagesId[index];
     }
 
     /**
      * getWebUrl method
+     *
      * @return websites
-     * */
-    public static int getWebUrl(){
+     */
+    public static int getWebUrl() {
         return websites[index][index1];
     }
 }

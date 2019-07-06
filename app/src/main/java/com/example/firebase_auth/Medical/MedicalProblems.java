@@ -16,17 +16,24 @@ import java.util.ArrayList;
 
 public class MedicalProblems extends AppCompatActivity {
 
-    /** medicalProblemImages ArrayList */
+    /**
+     * medicalProblemImages ArrayList
+     */
     ArrayList<Integer> problemsImages;
-    /** problemText ArrayList */
+    /**
+     * problemText ArrayList
+     */
     ArrayList<String> problemsText;
-    /** medicalListView to  to show medical list */
+    /**
+     * medicalListView to  to show medical list
+     */
     ListView medicalListView;
 
     /**
      * onCreate override method call first when activity start
+     *
      * @param savedInstanceState
-     * */
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,9 +62,11 @@ public class MedicalProblems extends AppCompatActivity {
 
     }
 
-    /** listItemSelector method
+    /**
+     * listItemSelector method
+     *
      * @param i
-     * */
+     */
     void listItemSelector(int i) {
 
         MedicinesController.index = (byte) i;
@@ -73,7 +82,7 @@ public class MedicalProblems extends AppCompatActivity {
     /**
      * fillProblemsImages method
      * to fill medical problem images
-     * */
+     */
     void fillProblemsImages() {
         problemsImages = new ArrayList();
         problemsImages.add(R.drawable.fever_face);
@@ -88,12 +97,12 @@ public class MedicalProblems extends AppCompatActivity {
     /**
      * fillProblemsText to load problem names
      * from resources
-     * */
+     */
     void fillProblemsText() {
         problemsText = new ArrayList();
         String[] problems = getResources().getStringArray(R.array.medicalProblems);
 
-        for(int i=0; i<problems.length; i++)
+        for (int i = 0; i < problems.length; i++)
             problemsText.add(problems[i]);
     }
 }
