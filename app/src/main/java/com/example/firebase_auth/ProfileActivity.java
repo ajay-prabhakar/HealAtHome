@@ -63,6 +63,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveUserInformation();
+                intentMainActivity();
             }
         });
 
@@ -86,6 +87,10 @@ public class ProfileActivity extends AppCompatActivity {
         FirebaseAuth.getInstance().signOut();
         finish();
         startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
+    }
+
+    private void intentMainActivity(){
+        startActivity(new Intent(ProfileActivity.this,MainActivity.class));
     }
 
     private void loadUserInformation() {
