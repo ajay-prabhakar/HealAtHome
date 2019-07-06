@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.firebase_auth.ConsultDoctor;
 import com.example.firebase_auth.R;
 import com.example.firebase_auth.SymptomsAdapter;
 
@@ -29,6 +31,8 @@ public class MedicalProblems extends AppCompatActivity {
      */
     ListView medicalListView;
 
+    Button button;
+
     /**
      * onCreate override method call first when activity start
      *
@@ -41,6 +45,7 @@ public class MedicalProblems extends AppCompatActivity {
 
         /** initializing medical listView  */
         medicalListView = (ListView) findViewById(R.id.listOfProblems);
+        button = findViewById(R.id.cunsolt_doctor);
 
         /** UiThread to load medical images and text from resources */
         this.runOnUiThread(new Runnable() {
@@ -57,6 +62,13 @@ public class MedicalProblems extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 listItemSelector(i);
+            }
+        });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MedicalProblems.this, ConsultDoctor.class));
             }
         });
 
