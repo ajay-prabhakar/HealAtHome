@@ -1,4 +1,3 @@
-
 package com.example.firebase_auth.Medical;
 
 import android.content.Intent;
