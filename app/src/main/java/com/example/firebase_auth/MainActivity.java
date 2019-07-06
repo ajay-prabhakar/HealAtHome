@@ -1,7 +1,9 @@
 package com.example.firebase_auth;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.firebase_auth.Medical.MedicalProblems;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -88,6 +90,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
+            startActivity(new Intent(MainActivity.this, MedicalProblems.class));
 
         } else if (id == R.id.nav_slideshow) {
 

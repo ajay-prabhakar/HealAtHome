@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -43,6 +45,9 @@ public class ProfileActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     Button signOut;
     TextView verifiedtext;
+    CheckBox checkDoctor;
+    String role;
+    Button skip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +61,8 @@ public class ProfileActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressbar_pic);
         verifiedtext = findViewById(R.id.emailVerified);
         signOut = findViewById(R.id.button_logoOut);
+        checkDoctor = findViewById(R.id.check_doctor);
+        skip = findViewById(R.id.button_skip);
 
         loadUserInformation();
 
@@ -63,7 +70,19 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveUserInformation();
-                intentMainActivity();
+            }
+        });
+
+        checkDoctor.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    role = "DOCTOR";
+
+                }
+                else {
+                    role = "PAITENT";
+                }
             }
         });
 
@@ -78,6 +97,13 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 signOutAccount();
+            }
+        });
+
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intentMainActivity();
             }
         });
 
@@ -112,7 +138,8 @@ public class ProfileActivity extends AppCompatActivity {
 
             if (user.isEmailVerified()) {
                 verifiedtext.setText("Verified");
-            } else {
+            }
+            else {
                 verifiedtext.setText("Not Verified(click to verify)");
                 verifiedtext.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -157,7 +184,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         if (user != null && uri_profileImage != null) {
             progressBar.setVisibility(View.GONE);
-            UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder().setDisplayName(profileName).setPhotoUri(Uri.parse(String.valueOf(uri_profileImage))).build();
+            UserProfileChangeRequest profile = new UserProfileChangeRequest.Builder().setDisplayName(profileName+getResources().getString(R.string.space)+role).setPhotoUri(Uri.parse(String.valueOf(uri_profileImage))).build();
 
 
             user.updateProfile(profile).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -166,6 +193,10 @@ public class ProfileActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         Toast.makeText(getApplicationContext(), "Successfull upload every thing", Toast.LENGTH_SHORT).show();
                     }
+                    else {
+                        Toast.makeText(getApplicationContext(),task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             });
 

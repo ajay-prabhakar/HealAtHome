@@ -12,7 +12,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".LogOut" />
         <activity android:name=".ProfileActivity" />
         <activity
@@ -27,6 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Medical.MedicalProblems"/>
+        <activity android:name=".Medical.RequiredMedicines"/>
+
     </application>
 
 </manifest>

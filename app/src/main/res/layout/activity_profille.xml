@@ -55,15 +55,15 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <TextView
-                android:id="@+id/text_email"
+            <CheckBox
+                android:id="@+id/check_doctor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
-                android:drawableLeft="@drawable/ic_email"
                 android:drawablePadding="16dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                tools:text="AjayPrabhakar369@gmail.com" />
+                android:enabled="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                tools:text="Check if you are doctor or else it is patient" />
 
             <TextView
                 android:id="@+id/text_not_verified"
@@ -140,6 +140,18 @@
                 android:layout_marginTop="15dp"
                 android:background="?colorPrimary"
                 android:text="Log Out"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white" />
+
+
+            <Button
+                android:id="@+id/button_skip"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:background="?colorPrimary"
+                android:text="skip"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white" />
 
