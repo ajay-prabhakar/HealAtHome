@@ -32,6 +32,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,10 +66,10 @@ public class MainActivity extends AppCompatActivity
         mAuth = FirebaseAuth.getInstance();
         consulList = new ArrayList<>();
         final FirebaseUser user = mAuth.getCurrentUser();
-        String email =user.getEmail();
+        String email = user.getEmail();
 
         final int index = email.indexOf('@');
-        String mail = email.substring(0,index);
+        String mail = email.substring(0, index);
         databaseReq = FirebaseDatabase.getInstance().getReference("ALL");
 
 
@@ -93,18 +94,47 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Consult consult = consulList.get(position);
-                Intent intent = new Intent(MainActivity.this,SurveyDetails.class);
-                intent.putExtra(SURVEY_ID,consult.getDoctor());
-                intent.putExtra(DISEASES,consult.getDiseses());
-                startActivity(intent);
+                FirebaseUser user = mAuth.getCurrentUser();
+
+                String name = user.getDisplayName();
+                String lastWord = name.substring(name.lastIndexOf(" ") + 1);
+
+                if (lastWord.equals("DOC")) {
+                    Consult consult = consulList.get(position);
+                    Intent intent = new Intent(MainActivity.this, SurveyDetails.class);
+                    intent.putExtra(SURVEY_ID, consult.getDoctor());
+                    intent.putExtra(DISEASES, consult.getDiseses());
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(), "You are surveyer Can not buy", Toast.LENGTH_SHORT).show();
+                }
             }
 
         });
+
+        hideItem();
+
+
     }
 
+    private void hideItem() {
 
+        FirebaseUser user = mAuth.getCurrentUser();
 
+        String name = user.getDisplayName();
+        String lastWord = name.substring(name.lastIndexOf(" ") + 1);
+
+        if (lastWord.equals("DON")) {
+            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+            Menu nav_Menu = navigationView.getMenu();
+            nav_Menu.findItem(R.id.nav_gallery).setVisible(false);
+
+        } else {
+            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+            Menu nav_Menu = navigationView.getMenu();
+            nav_Menu.findItem(R.id.nav_gallery).setVisible(false);
+        }
+    }
 
 
     @Override
