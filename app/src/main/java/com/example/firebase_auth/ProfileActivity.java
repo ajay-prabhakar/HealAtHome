@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.ProxyFileDescriptorCallback;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -27,6 +30,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -46,13 +54,21 @@ public class ProfileActivity extends AppCompatActivity {
     Button signOut;
     TextView verifiedtext;
     CheckBox checkDoctor;
-    String role;
+    String role="PAT";
     Button skip;
+    EditText specification,phoneNumber,age;
+    String spec, ages, num;
+
+
+    DatabaseReference docDatabase;
+    DatabaseReference patDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profille);
+
+
 
         mAuth = FirebaseAuth.getInstance();
         profile_pic = findViewById(R.id.image_view);
@@ -63,8 +79,14 @@ public class ProfileActivity extends AppCompatActivity {
         signOut = findViewById(R.id.button_logoOut);
         checkDoctor = findViewById(R.id.check_doctor);
         skip = findViewById(R.id.button_skip);
+        specification = findViewById(R.id.specification);
+        phoneNumber = findViewById(R.id.phoneNumber);
+        age = findViewById(R.id.age);
+
+
 
         loadUserInformation();
+
 
         button_saveChanges.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,13 +99,16 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    role = "DOCTOR";
+                    role = "DOC";
 
                 } else {
-                    role = "PAITENT";
+                    role = "PAT";
                 }
+
+                checks();
             }
         });
+
 
         profile_pic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,6 +131,16 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void checks(){
+        if (role.equals("DOC")){
+            specification.setHint("What is you specification");
+        }
+        else {
+
+            specification.setHint("Tell us about your self");
+        }
     }
 
     private void signOutAccount() {
@@ -132,7 +167,8 @@ public class ProfileActivity extends AppCompatActivity {
             }
             if (user.getDisplayName() != null) {
                 String displayName = user.getDisplayName();
-                profile_name.setText(displayName);
+                String[] arr = displayName.split(getResources().getString(R.string.space));
+                profile_name.setText(arr[0]);
             }
 
             if (user.isEmailVerified()) {
@@ -178,7 +214,81 @@ public class ProfileActivity extends AppCompatActivity {
             profile_name.requestFocus();
         }
 
+        spec = specification.getText().toString().trim();
+        num = phoneNumber.getText().toString().trim();
+        ages = age.getText().toString().trim();
+
         FirebaseUser user = mAuth.getCurrentUser();
+
+        if (role.equals("DOC")){
+
+            docDatabase = FirebaseDatabase.getInstance().getReference("DOC");
+            if (!(TextUtils.isEmpty(spec) && TextUtils.isEmpty(num) && TextUtils.isEmpty(ages))){
+
+
+                docDatabase.orderByChild("email").equalTo(user.getEmail()).addValueEventListener(new ValueEventListener(){
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot){
+                        if(dataSnapshot.exists()) {
+                            Toast.makeText(getApplicationContext(), "Name already exists", Toast.LENGTH_SHORT).show();
+
+                        }
+                        else {
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Profile profile = new Profile(spec,num,ages,user.getEmail().trim());
+                            String id = docDatabase.push().getKey();
+                            docDatabase.child(id).setValue(profile);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
+            }
+            else {
+                Toast.makeText(getApplicationContext(),"Enter all feilds",Toast.LENGTH_SHORT).show();
+            }
+        } else {
+
+            patDatabase = FirebaseDatabase.getInstance().getReference("PAT");
+
+            if (!(TextUtils.isEmpty(spec) && TextUtils.isEmpty(num) && TextUtils.isEmpty(ages))){
+
+
+
+                patDatabase.orderByChild("email").equalTo(user.getEmail()).addValueEventListener(new ValueEventListener(){
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot){
+                        if(dataSnapshot.exists()) {
+                            Toast.makeText(getApplicationContext(), "Name already exists", Toast.LENGTH_SHORT).show();
+
+                        }
+                        else {
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Profile profile = new Profile(spec,num,ages,user.getEmail().trim());
+                            String id = patDatabase.push().getKey();
+                            patDatabase.child(id).setValue(profile);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+            }
+            else {
+                Toast.makeText(getApplicationContext(),"Enter all feilds",Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+
 
         if (user != null && uri_profileImage != null) {
             progressBar.setVisibility(View.GONE);

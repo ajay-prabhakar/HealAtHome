@@ -53,6 +53,17 @@
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="0dp" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="25dp"
+            android:padding="10dp"
+            android:id="@+id/cunsolt_doctor"
+            android:background="@color/colorPrimary"
+            android:text="Cunsolt Doctor"/>
+
+
     </LinearLayout>
 
 </LinearLayout>

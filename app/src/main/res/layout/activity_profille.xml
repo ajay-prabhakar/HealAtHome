@@ -81,29 +81,36 @@
                 android:visibility="invisible" />
 
 
-            <TextView
-                android:id="@+id/text_phone"
+            <EditText
+                android:id="@+id/specification"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
                 android:layout_marginBottom="20dp"
-                android:drawableLeft="@drawable/ic_phone"
+                android:hint="Specification"
                 android:drawablePadding="16dp"
                 android:enabled="true"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                tools:text="+919515253369" />
-
-            <TextView
-                android:id="@+id/text_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:layout_marginBottom="20dp"
-                android:drawableLeft="@drawable/ic_phone"
-                android:drawablePadding="16dp"
-                android:enabled="true"
-                android:text="Change Password"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+            <EditText
+                android:id="@+id/phoneNumber"
+                android:hint="Phone Number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_marginBottom="20dp"
+
+                android:drawablePadding="16dp"
+                android:enabled="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/age"
+                android:hint="Age"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
 
 
             <ProgressBar
