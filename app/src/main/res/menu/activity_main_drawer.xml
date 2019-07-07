@@ -20,19 +20,18 @@
             android:id="@+id/nav_tools"
             android:icon="@drawable/ic_firstaid"
             android:title="First Aid" />
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@android:drawable/btn_star"
+            android:title="All survey you paid" />
+        <item
+            android:id="@+id/nav_send"
+            android:icon="@android:drawable/btn_default"
+            android:title="Medical Problems" />
+
     </group>
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
-        </menu>
-    </item>
+
+
 
 </menu>

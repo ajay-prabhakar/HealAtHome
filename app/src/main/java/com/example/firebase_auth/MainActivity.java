@@ -136,11 +136,13 @@ public class MainActivity extends AppCompatActivity
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
             Menu nav_Menu = navigationView.getMenu();
             nav_Menu.findItem(R.id.nav_gallery).setVisible(false);
+            nav_Menu.findItem(R.id.nav_share).setVisible(true);
 
         } else {
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
             Menu nav_Menu = navigationView.getMenu();
             nav_Menu.findItem(R.id.nav_gallery).setVisible(true);
+            nav_Menu.findItem(R.id.nav_share).setVisible(false);
         }
     }
 
@@ -197,6 +199,9 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            FirebaseAuth.getInstance().signOut();
+            finish();
+            startActivity(new Intent(MainActivity.this,LoginActivity.class));
             return true;
         }
 
@@ -212,7 +217,8 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-            startActivity(new Intent(MainActivity.this, MedicalProblems.class));
+            startActivity(new Intent(MainActivity.this,ConsultDoctor.class));
+
 
         } else if (id == R.id.nav_slideshow) {
 
@@ -222,9 +228,11 @@ public class MainActivity extends AppCompatActivity
             startActivity(new Intent(MainActivity.this, FirstAid.class));
 
         } else if (id == R.id.nav_share) {
+            startActivity(new Intent(MainActivity.this,BoughtSurveys.class));
 
 
         } else if (id == R.id.nav_send) {
+            startActivity(new Intent(MainActivity.this, MedicalProblems.class));
 
         }
 

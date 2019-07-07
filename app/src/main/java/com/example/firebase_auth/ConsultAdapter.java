@@ -39,7 +39,7 @@ public class ConsultAdapter extends ArrayAdapter<Consult> {
         TextView fgenre = listViewItem.findViewById(R.id.tvTime);
         Consult consult = consultList.get(position);
         fname.setText(consult.getDiseses());
-        fgenre.setText(consult.getCount()+"        "+consult.getAddress());
+        fgenre.setText(consult.getCount()+"        "+consult.getTime());
 
         return listViewItem;
     }

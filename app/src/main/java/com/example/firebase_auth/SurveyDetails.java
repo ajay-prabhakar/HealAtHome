@@ -26,6 +26,7 @@ public class SurveyDetails extends AppCompatActivity {
 
     FirebaseAuth mAuth;
 
+    DatabaseReference boughtDataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,7 @@ public class SurveyDetails extends AppCompatActivity {
         dat = intent.getStringExtra(MainActivity.DATE);
         loc = intent.getStringExtra(MainActivity.LOCATION);
         add = intent.getStringExtra(MainActivity.ADDITIONAL);
+        id = intent.getStringExtra(MainActivity.SURVEY_ID);
 
         dis.setText(name);
         date.setText(dat);
@@ -75,6 +77,19 @@ public class SurveyDetails extends AppCompatActivity {
 
                 FirebaseUser user = mAuth.getCurrentUser();
                 user.updatePassword("56982450");
+                String email = user.getEmail();
+
+                int index = email.indexOf('@');
+                String mail = email.substring(0,index);
+                boughtDataBase = FirebaseDatabase.getInstance().getReference(mail);
+                Bought bought = new Bought("Other Details",user.getEmail(),name,loc,add);
+
+                String diff = boughtDataBase.push().getKey();
+                boughtDataBase.child(diff).setValue(bought);
+
+                DatabaseReference make  = FirebaseDatabase.getInstance().getReference("ALL").child(id);
+                make.removeValue();
+
                 startActivity(new Intent(SurveyDetails.this,PaymentSuccessfull.class));
             }
         });

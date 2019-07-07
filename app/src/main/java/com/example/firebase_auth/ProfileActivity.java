@@ -262,6 +262,8 @@ public class ProfileActivity extends AppCompatActivity {
                             Profile profile = new Profile(spec,num,ages,user.getEmail().trim());
                             String id = patDatabase.push().getKey();
                             patDatabase.child(id).setValue(profile);
+                            finish();
+                            startActivity(new Intent(ProfileActivity.this,MainActivity.class));
                         }
                     }
 
