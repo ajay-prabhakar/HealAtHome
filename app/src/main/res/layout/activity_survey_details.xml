@@ -14,6 +14,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:layout_margin="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -35,6 +36,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_margin="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -56,6 +58,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_margin="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -67,8 +70,13 @@
                     android:text="Address"
                     android:textSize="20sp"
                     android:textStyle="bold" />
-                <TextView
-                    android:layout_width="match_parent"
+                <Button
+                    android:background="@color/colorPrimary"
+                    android:text="show Location"
+                    android:padding="10dp"
+                    android:layout_margin="24dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="100dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5px"
                     android:textStyle="italic"
@@ -78,6 +86,7 @@
 
 
             <LinearLayout
+                android:layout_margin="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -86,10 +95,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Additional"
+                    android:text="Count"
                     android:textSize="20sp"
                     android:textStyle="bold" />
                 <TextView
+                    android:textColor="@color/colorPrimary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5px"
@@ -98,11 +108,23 @@
 
             </LinearLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:text="To book this Survey you have to pay $1"/>
 
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="10dp"
+                android:id="@+id/payment"
+                android:layout_gravity="center_horizontal"
+                android:text="PAY  $1"/>
 
         </LinearLayout>
-
-
-
     </ScrollView>
 </LinearLayout>

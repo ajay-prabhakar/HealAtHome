@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SurveyDetails"></activity>
+        <activity android:name=".PaymentSuccessfull"></activity>
+        <activity android:name=".SurveyDetails" />
         <activity android:name=".ConsultDoctor" />
         <activity android:name=".firstAid.FirstAid" />
         <activity

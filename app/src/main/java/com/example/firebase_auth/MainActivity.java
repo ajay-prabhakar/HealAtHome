@@ -46,6 +46,11 @@ public class MainActivity extends AppCompatActivity
 
     public static final String DISEASES = "diseases";
     public static final String SURVEY_ID = "surveyId";
+    public static final String DATE = "date";
+    public static final String LOCATION = "location";
+
+    public static final String ADDITIONAL = "additional";
+
 
 
     ListView consultList;
@@ -104,6 +109,9 @@ public class MainActivity extends AppCompatActivity
                     Intent intent = new Intent(MainActivity.this, SurveyDetails.class);
                     intent.putExtra(SURVEY_ID, consult.getDoctor());
                     intent.putExtra(DISEASES, consult.getDiseses());
+                    intent.putExtra(DATE,consult.getTime());
+                    intent.putExtra(LOCATION,consult.getAddress());
+                    intent.putExtra(ADDITIONAL,consult.getCount());
                     startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(), "You are surveyer Can not buy", Toast.LENGTH_SHORT).show();
